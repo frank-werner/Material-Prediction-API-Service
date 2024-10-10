@@ -1,0 +1,243 @@
+openapi: 3.1.0
+info:
+  title: Price forecasting service
+  description: '
+
+    This API service is used to forecast product price given the contributing materials
+    that form the final product.
+
+
+    You can provide a variable "months" to set the forecasting period
+
+
+    forecast starts from 2/2023, as it is the last timestamp sample in the training
+    set
+
+
+    ## Details on data
+
+
+    "st37": "Weight of ST37 in KG",
+
+    "p_st37": "Spot price of ST37",
+
+    "p_high_carbon": "Spot price of High Carbon",
+
+    "alu": "Weight of Alu in KG",
+
+    "labour": "Labor hours",
+
+    "high_carbon": "Weight of High Carbon in KG",
+
+    "medium_carbon": "Weight of Medium Carbon in KG",
+
+    "p_medium_carbon": "Spot Price of Medium Carbon",
+
+    "p_nodular_cast_iron": "Spot Price of Nodular Cast Iron",
+
+    "nodular_cast_iron": "Weight of Nodular Cast Iron in KG",
+
+    "grey_cast_iron": "Weight of Grey Cast Iron in KG",
+
+    "p_grey_cast_iron": "Spot Price of Grey Cast Iron",
+
+    "nonalloy_cast": "Weight of Nonalloy Cast in KG",
+
+    "p_nonalloy_cast": "Spot Price of Nonalloy Cast",
+
+    "months": "Forecasting period in months (default is 24 months if argument not
+    provided)"
+
+
+    '
+  version: 0.1.0
+paths:
+  /status:
+    get:
+      summary: Read Root
+      operationId: read_root_status_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /help:
+    get:
+      summary: Get Help
+      operationId: get_help_help_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /calculate/:
+    get:
+      summary: Calculate
+      operationId: calculate_calculate__get
+      parameters:
+      - name: st37
+        in: query
+        required: false
+        schema:
+          type: number
+          title: ST37
+          description: Weight of ST37
+        description: Weight of ST37
+      - name: p_st37
+        in: query
+        required: false
+        schema:
+          type: number
+          title: spot_ST37
+          description: spot price of ST37
+        description: spot price of ST37
+      - name: p_high_carbon
+        in: query
+        required: false
+        schema:
+          type: number
+          title: spot_High_Carbon
+          description: spot price of High Carbon
+        description: spot price of High Carbon
+      - name: alu
+        in: query
+        required: false
+        schema:
+          type: number
+          title: Alu
+          description: Weight of Alu
+        description: Weight of Alu
+      - name: labour
+        in: query
+        required: false
+        schema:
+          type: number
+          title: Labour
+          description: Labor hours
+        description: Labor hours
+      - name: high_carbon
+        in: query
+        required: false
+        schema:
+          type: number
+          title: high_carbon
+          description: Weight of High Carbon
+        description: Weight of High Carbon
+      - name: medium_carbon
+        in: query
+        required: false
+        schema:
+          type: number
+          title: medium_carbon
+          description: Weight of Medium Carbon
+        description: Weight of Medium Carbon
+      - name: p_medium_carbon
+        in: query
+        required: false
+        schema:
+          type: number
+          title: Spot_Medium_Carbon
+          description: Spot Price of Medium Carbon
+        description: Spot Price of Medium Carbon
+      - name: p_nodular_cast_iron
+        in: query
+        required: false
+        schema:
+          type: number
+          title: Spot_Nodular_Iron
+          description: Spot Price of Nodular Cast Iron
+        description: Spot Price of Nodular Cast Iron
+      - name: nodular_cast_iron
+        in: query
+        required: false
+        schema:
+          type: number
+          title: nodular_cast_iron
+          description: Weight of Nodular Cast Iron
+        description: Weight of Nodular Cast Iron
+      - name: grey_cast_iron
+        in: query
+        required: false
+        schema:
+          type: number
+          title: grey_cast_iron
+          description: Weight of Grey Cast Iron
+        description: Weight of Grey Cast Iron
+      - name: p_grey_cast_iron
+        in: query
+        required: false
+        schema:
+          type: number
+          title: Spot_grey_cast_iron
+          description: Spot Price of Grey_Cast_Iron
+        description: Spot Price of Grey_Cast_Iron
+      - name: nonalloy_cast
+        in: query
+        required: false
+        schema:
+          type: number
+          title: nonalloy_cast
+          description: Weight of Nonalloy Cast
+        description: Weight of Nonalloy Cast
+      - name: p_nonalloy_cast
+        in: query
+        required: false
+        schema:
+          type: number
+          title: Spot_nonalloy_cast
+          description: Spot Price of Nonalloy Cast
+        description: Spot Price of Nonalloy Cast
+      - name: months
+        in: query
+        required: false
+        schema:
+          type: integer
+          title: length of prediction time
+          description: Forecasting period in months
+        description: Forecasting period in months
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
