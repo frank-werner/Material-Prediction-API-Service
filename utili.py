@@ -1,3 +1,9 @@
+#
+# SPDX-FileName: util.py
+# SPDX-FileCopyrightText: Copyright 2010 - 2025 Software GmbH, Darmstadt, Germany and/or its subsidiaries and/or its affiliates
+# SPDX-License-Identifier: Apache-2.0
+#
+
 import pickle
 import json
 import neuralprophet
