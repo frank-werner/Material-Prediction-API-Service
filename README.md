@@ -1,4 +1,10 @@
-# Material-Prediction-API-Service
+/*
+* SPDX-FileName: README.md
+* SPDX-FileCopyrightText: Copyright 2010 - 2025 Software GmbH, Darmstadt, Germany and/or its subsidiaries and/or its affiliates
+* SPDX-License-Identifier: Apache-2.0
+*
+*/
+
 # Product Price Forecasting API Service
 
 This API service provides a price forecasting solution for a product based on the contributing materials that form the final product. The service uses machine learning models (specifically `NeuralProphet`) to predict the future price of materials over a defined period and returns a forecast of the product price based on the weights and spot prices of various input materials.
