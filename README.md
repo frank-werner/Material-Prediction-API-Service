@@ -21,7 +21,7 @@ This API service provides a price forecasting solution for a product based on th
 
 ## Description
 
-This service accepts multiple material types as inputs, such as weight (in KG), spot price, and forecast period (in months), and returns the predicted price of the product over the specified period. The forecast starts from **February 2023**, as that is the last timestamp in the training data.
+This service accepts multiple material types as inputs, such as weight (in KG), spot price, and forecast period (in months), and returns the predicted price of the product over the specified period. The forecast starts from **February 2023**, as that is the last timestamp in the training data. In addition, the toolchain is contained that allows pulling of data, processing and post-processing and storage for training.
 
 ### Key Materials Used in the Forecast:
 
